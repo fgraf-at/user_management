@@ -1,8 +1,0 @@
-#surefire
-#Wed Jul 10 18:41:28 CEST 2019
-maven.ext.class.path=C\:\\Program Files\\NetBeans 8.2\\java\\maven-nblib\\netbeans-eventspy.jar
-user.dir=C\:\\Users\\graff\\Documents\\NetBeansProjects\\mavenproject1\\HUE_01_Graf_Webservice_maven
-file.encoding=UTF-8
-localRepository=C\:\\Users\\graff\\.m2\\repository
-netbeans.deploy=true
-basedir=C\:\\Users\\graff\\Documents\\NetBeansProjects\\mavenproject1\\HUE_01_Graf_Webservice_maven
