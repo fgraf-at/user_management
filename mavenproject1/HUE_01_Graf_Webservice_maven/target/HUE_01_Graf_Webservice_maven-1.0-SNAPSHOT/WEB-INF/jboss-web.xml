@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web xmlns="http://www.jboss.com/xml/ns/javaee">
+  <context-root>/HUE_01_Graf_Webservice_maven</context-root>
+</jboss-web>
