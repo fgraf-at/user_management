@@ -24,7 +24,5 @@ public interface IDAO {
     public boolean saveBenutzer(Benutzer b); 
     public boolean validate(Benutzer b);
     public boolean mergeBenutzer(Benutzer b);
-
-    public Reisetyp getReisetypFromId(String value);
 }
 

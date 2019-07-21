@@ -34,9 +34,8 @@ import javax.validation.constraints.Size;
 @Table(name = "Benutzer")
 @SequenceGenerator(name = "ben_seq", sequenceName = "ben_seq_id")
 public class Benutzer implements Serializable {
---test
-    private static final long serialVersionUID = 1L;
 
+    private static final long serialVersionUID = 1L;
 
     public Benutzer() {
     }
@@ -45,10 +44,6 @@ public class Benutzer implements Serializable {
     @GeneratedValue(generator = "ben_seq")
     @Column(name = "email")
     private String email;
-    @Column(name = "name", nullable = true)
-    private String name;
-    @Column(name = "surname", nullable = true)
-    private String surname;
 
     @Column(name = "passwort")
     @Size(min = 6)

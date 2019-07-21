@@ -36,12 +36,16 @@ public class ReiseConverter implements Converter {
      */
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-      
-       
-        if(value.equals(dao.getReisetypFromId(value))){// mit Equals werden die Strings auf gleichheit geprüft  
-            return value;
+        System.out.println(dao.getAllReisetypen());
+        for (Reisetyp x : dao.getAllReisetypen()) { //zurückverwandeln der Strings in das entsprächende Objekt.
+            
+            System.out.println("hier im converter");
+            if(value.equals(x.getBezeichnung())){// mit Equals werden die Strings auf gleichheit geprüft
+                System.out.println(value);
+                System.out.println(x);
+                 return x;
+            }
         }
-        
         throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_WARN, "Reisetyp", "Reisetyp kann nicht Convertiert werden"));
     }
     /**
@@ -55,8 +59,8 @@ public class ReiseConverter implements Converter {
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
         Reisetyp r = (Reisetyp) value; //Casten in den Reisetyp
-        
-        return Integer.toString(r.getId()); //Holen der Bezeichnung
+        System.out.println("hallo " + r);
+        return r.getBezeichnung(); //Holen der Bezeichnung
     }
 
 }

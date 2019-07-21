@@ -149,19 +149,4 @@ public class DAO implements IDAO {
             return false;
         }
     }
-
-    @Override
-    public Reisetyp getReisetypFromId(String value) {
-        try {
-            TypedQuery<Reisetyp> tq = em.createQuery("select r from Reisetyp r where r.id = valP", Reisetyp.class)
-                    .setParameter("valP", value);
-            
-            return tq.getSingleResult();
-        } catch (Exception e) {
-            System.err.println("Fehler in getIdFromReisetyp: " + e.getMessage());
-            return null;
-        }
-    }
-    
-    
 }

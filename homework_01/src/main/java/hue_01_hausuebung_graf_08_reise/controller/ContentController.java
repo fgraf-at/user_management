@@ -44,10 +44,9 @@ public class ContentController implements Serializable{
      */
     public List<Reiseveranstaltung> getReiseVeranstaltungenFromCurrentUser() {
         Benutzer b = null;
-        List<Reiseveranstaltung> lReiseveranstaltung;
         if ((b = dao.getBenutzer(us.getBenutzer())) != null) {
-            List<Reisetyp> lReisetyp = getReisetypesFromCurrentUser();
-            lReiseveranstaltung = new ArrayList<>();
+            List<Reisetyp> lReisetyp = b.getReisetyp(); //Reisetypen des Benutzers holen
+            List<Reiseveranstaltung> lReiseveranstaltung = new ArrayList<>();
             for (Reisetyp x : lReisetyp) { // Ich hole mir den Reisetyp
                  // ich füge von dem entsprechenden Reisetyp die Reiseveranstaltung in die Liste
                 lReiseveranstaltung.addAll(x.getReiseveranstaltung());
@@ -60,19 +59,10 @@ public class ContentController implements Serializable{
 
         //FacesContext holen und Message hinzufügen
         FacesContext fc = FacesContext.getCurrentInstance();
-        FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_WARN, "Warnung", "Benutzer nicht gefunden");
-        fc.addMessage(null, fm);
+        fc.addMessage("getReiseVeranstaltungenFromCurrentUser", new FacesMessage(FacesMessage.SEVERITY_WARN, "Warnung", "Benutzer nicht gefunden"));
 
         return new ArrayList<>(0); //wenn kein Benutzer, dann wird eine leere Liste zurückgegeben.
 
-    }
-    public List<Reisetyp> getReisetypesFromCurrentUser(){
-       Benutzer b = null;
-       if( (b = dao.getBenutzer(us.getBenutzer())) !=null){      
-            return b.getReisetyp(); 
-       }else{
-           return new ArrayList<>(0); // werden keine Reisetypen gefunden wird eine leere liste zurückgegeben
-       }
     }
     /**
      * Diese Methode speichert die geänderten Reisetypen des Benutzers
@@ -80,7 +70,7 @@ public class ContentController implements Serializable{
      */
     public String setReisetypenFromCurrentUser(){ 
 //Holen des FacesContexts
-        FacesContext fc = FacesContext.getCurrentInstance();
+             FacesContext fc = FacesContext.getCurrentInstance();
         if(dao.mergeBenutzer(us.getBenutzer())){
             fc.addMessage("t", new FacesMessage(FacesMessage.SEVERITY_INFO, "Gespeichert", "Änderungen wurden gespeichert")); //Fehlermeldung wird 
             //im Erfolgsfall in den FacesContext gespeichert
@@ -101,6 +91,7 @@ public class ContentController implements Serializable{
     public List<Reisetyp> getAllReisetypes(){
         List<Reisetyp> lReisetyps = new ArrayList<>();
        if( (lReisetyps = dao.getAllReisetypen()) !=null){
+           
            return lReisetyps;
        }else{
            return new ArrayList<>(0); // werden keine Reisetypen gefunden wird eine leere liste zurückgegeben
@@ -110,7 +101,15 @@ public class ContentController implements Serializable{
      *  Mit dieser Methode kann man sich alle Reisetypen des Benutzers holen
      * @return Eine Liste der Reisetypen des Benutzers
      */
-      
+      public List<Reisetyp> getReisetypesFromCurrentUser(){
+          Benutzer b = null;
+       if( (b = dao.getBenutzer(us.getBenutzer())) !=null){
+            
+            return b.getReisetyp(); 
+       }else{
+           return new ArrayList<>(0); // werden keine Reisetypen gefunden wird eine leere liste zurückgegeben
+       }
+    }
       
    
 }

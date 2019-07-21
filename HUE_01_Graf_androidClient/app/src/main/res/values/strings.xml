@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">HUE_01_Graf_androidClient</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="layout_textView">layout</string>
+
+</resources>
