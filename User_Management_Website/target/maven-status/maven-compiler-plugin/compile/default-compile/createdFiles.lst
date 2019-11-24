@@ -7,7 +7,10 @@ hue_01_hausuebung_graf_08_reise\converter\ReiseConverter.class
 hue_01_hausuebung_graf_08_reise\controller\UserController.class
 hue_01_hausuebung_graf_08_reise\db\DAO.class
 hue_01_hausuebung_graf_08_reise\model\Benutzer.class
+hue_01_hausuebung_graf_08_reise\model\Benutzer_.class
 hue_01_hausuebung_graf_08_reise\listener\HttpListener.class
+hue_01_hausuebung_graf_08_reise\model\Reisetyp_.class
 hue_01_hausuebung_graf_08_reise\controller\logOutController.class
 hue_01_hausuebung_graf_08_reise\db\IDAO.class
 listener1\SessionListener.class
+hue_01_hausuebung_graf_08_reise\model\Reiseveranstaltung_.class
