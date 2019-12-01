@@ -10,11 +10,12 @@
     border: 1px solid #666666;
     color: #000000;
     min-height: 700px;
+   
 }
 .center{
     margin:  auto;
     width: 900px;
-    padding: 0px 25px 0px 25px;
+    padding: 30px 25px 30px 25px;
 }
 
 

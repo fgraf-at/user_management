@@ -163,4 +163,6 @@ public class Benutzer implements Serializable {
         return "Benutzer{" + "email=" + email + ", passwort=" + passwort + ", newsletter=" + newsletter + '}';
     }
     
+    
+    
 }

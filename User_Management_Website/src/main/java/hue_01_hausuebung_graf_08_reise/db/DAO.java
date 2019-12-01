@@ -149,4 +149,22 @@ public class DAO implements IDAO {
             return false;
         }
     }
+
+    @Override
+    public Reisetyp getReisetypFromID(int id) {
+        try {
+           try{
+                TypedQuery<Reisetyp> tq = em.createQuery("select r from Reisetyp r where r.id = :id", Reisetyp.class)
+                        .setParameter("id", id);   
+                
+                return tq.getSingleResult();
+           } catch(Exception e ){
+               throw new RuntimeException("Benutze kann nicht gefunden werden");
+           }
+           
+        } catch (Exception e) {
+            System.err.println("Fehler in getBenutzerFromID: " + e.getMessage());
+            return null;
+        }
+    }
 }

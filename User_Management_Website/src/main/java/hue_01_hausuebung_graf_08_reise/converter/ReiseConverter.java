@@ -6,6 +6,7 @@
 package hue_01_hausuebung_graf_08_reise.converter;
 
 import hue_01_hausuebung_graf_08_reise.db.IDAO;
+import hue_01_hausuebung_graf_08_reise.model.Benutzer;
 import hue_01_hausuebung_graf_08_reise.model.Reisetyp;
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
@@ -36,17 +37,21 @@ public class ReiseConverter implements Converter {
      */
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        System.out.println(dao.getAllReisetypen());
-        for (Reisetyp x : dao.getAllReisetypen()) { //zurückverwandeln der Strings in das entsprächende Objekt.
-            
-            System.out.println("hier im converter");
-            if(value.equals(x.getBezeichnung())){// mit Equals werden die Strings auf gleichheit geprüft
-                System.out.println(value);
-                System.out.println(x);
-                 return x;
+         
+        int intVal = Integer.parseInt(value);
+        try{
+            System.out.println("hier in converter " + intVal);
+            Reisetyp b = dao.getReisetypFromID(intVal);
+            if(b!=null){
+               return b;
             }
+             throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_WARN, "Reisetyp", "Benutzer kann nicht konvertiert werden"));
+        
+            
+        }catch(Exception e){   
+            throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_WARN, "Reisetyp", e.getMessage()));
         }
-        throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_WARN, "Reisetyp", "Reisetyp kann nicht Convertiert werden"));
+        
     }
     /**
      * Die Bezeichnung des Objektes wird als String zurückgegeben. Wird auf der Website 
@@ -59,8 +64,7 @@ public class ReiseConverter implements Converter {
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
         Reisetyp r = (Reisetyp) value; //Casten in den Reisetyp
-        System.out.println("hallo " + r);
-        return r.getBezeichnung(); //Holen der Bezeichnung
+        return Integer.toString(r.getId()); 
     }
 
 }
